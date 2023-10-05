@@ -1,0 +1,47 @@
+@startuml
+abstract class seminarTwo.decorator.DrawableDecorator {
+# Drawable decoratedDrawable
++ void draw()
+}
+class seminarTwo.observer.Publisher {
+- List<IObserver> observers
++ void attach(IObserver)
++ void detach(IObserver)
++ void notify(String)
+}
+class seminarTwo.observer.SubscriberOne {
++ void update(String)
+}
+interface seminarTwo.decorator.Drawable {
+~ void draw()
+}
+class seminarTwo.observer.SubscriberTwo {
++ void update(String)
+}
+interface seminarTwo.observer.IObserver {
+~ void update(String)
+}
+class seminarTwo.Main {
++ {static} void main(String[])
+}
+class seminarTwo.decorator.Triangle {
++ void draw()
+}
+interface seminarTwo.observer.IPublisher {
+~ void attach(IObserver)
+~ void detach(IObserver)
+~ void notify(String)
+}
+class seminarTwo.decorator.GreenDrawableDecorator {
++ void draw()
+- void setGreenBorder(Drawable)
+}
+
+
+seminarTwo.decorator.Drawable <|.. seminarTwo.decorator.DrawableDecorator
+seminarTwo.observer.IPublisher <|.. seminarTwo.observer.Publisher
+seminarTwo.observer.IObserver <|.. seminarTwo.observer.SubscriberOne
+seminarTwo.observer.IObserver <|.. seminarTwo.observer.SubscriberTwo
+seminarTwo.decorator.Drawable <|.. seminarTwo.decorator.Triangle
+seminarTwo.decorator.DrawableDecorator <|-- seminarTwo.decorator.GreenDrawableDecorator
+@enduml
